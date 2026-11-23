@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-ivory: #FFF8EA;
+    --bg-black: #080808;
+    --color-orange: #FFAD32;
+    --color-softgrey: #E7E2D8;
+  }
+
+  html {
+    background-color: #080808;
+    color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  ::selection {
+    background-color: #FFAD32;
+    color: #080808;
+  }
+}
+
+@layer utilities {
+  .stroke-dark {
+    -webkit-text-stroke: 1.5px #080808;
+    color: transparent;
+  }
+
+  .stroke-white {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+    color: transparent;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stroke-white-thick {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.6);
+    color: transparent;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stroke-orange {
+    -webkit-text-stroke: 2px #FFAD32;
+    color: transparent;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .bg-noise {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
