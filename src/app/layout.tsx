@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WelcomeScreen } from "@/components/ui/WelcomeScreen";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { siteConfig } from "@/data/siteConfig";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
@@ -92,6 +93,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-[#080808] text-white antialiased selection:bg-[#FFAD32] selection:text-[#080808] min-h-screen flex flex-col">
+        <WelcomeScreen />
         <SmoothScrollProvider>
           <Navbar />
           <div className="flex-grow">{children}</div>
