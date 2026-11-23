@@ -4,208 +4,198 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function WelcomeScreen() {
-  const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [counter, setCounter] = useState(0);
 
-  const phrases = [
-    "WE DON'T DO BACKGROUND NOISE.",
-    "THE UNCOMMON, MADE UNMISSABLE.",
-    "WHERE BRANDS BECOME CULTURE.",
+  // High-fashion agency editorial word sequence
+  const sequence = [
+    { label: "01", text: "ATTENTION", subtitle: "CAPTURING CULTURAL REAL ESTATE" },
+    { label: "02", text: "MOMENTUM", subtitle: "MAKING BRANDS IMPOSSIBLE TO IGNORE" },
+    { label: "03", text: "NOISECULTURE", subtitle: "NOISE WITH INTENT." },
   ];
+
+  const columns = [0, 1, 2, 3, 4];
 
   useEffect(() => {
     // Respect user's reduced-motion preference
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setLoading(false);
+      setIsVisible(false);
       return;
     }
 
-    // Lock body scrolling while loading
+    // Lock body scrolling during the opening reveal
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const startTime = performance.now();
-    const duration = 1450; // Total count duration in ms
+    // Step 1: Advance words at crisp, intentional beats
+    const timer1 = setTimeout(() => setWordIndex(1), 480);
+    const timer2 = setTimeout(() => setWordIndex(2), 960);
 
+    // Step 2: Smooth mechanical counter (0 -> 100)
+    const startTime = performance.now();
+    const duration = 1400;
     let animFrame: number;
 
     const tick = (currentTime: number) => {
       const elapsed = currentTime - startTime;
-      const t = Math.min(elapsed / duration, 1);
+      const progress = Math.min(elapsed / duration, 1);
+      // Easing: rapid start, smooth finish
+      const eased = Math.floor((1 - Math.pow(1 - progress, 3)) * 100);
+      setCounter(eased);
 
-      // Smooth cubic-bezier ease out deceleration for natural mechanical feel
-      const easedT = 1 - Math.pow(1 - t, 3);
-      const currentVal = Math.min(100, Math.floor(easedT * 100));
-
-      setProgress(currentVal);
-
-      // Switch phrases smoothly at 33% and 66%
-      if (t < 0.35) {
-        setPhraseIndex(0);
-      } else if (t < 0.7) {
-        setPhraseIndex(1);
-      } else {
-        setPhraseIndex(2);
-      }
-
-      if (t < 1) {
+      if (progress < 1) {
         animFrame = requestAnimationFrame(tick);
       } else {
-        setProgress(100);
-        // Brief deliberate pause at 100% before initiating the liquid curtain reveal
+        setCounter(100);
+        // Step 3: Trigger cascading shutter exit
         setTimeout(() => {
-          setLoading(false);
+          setIsVisible(false);
           document.body.style.overflow = originalOverflow;
-        }, 280);
+        }, 320);
       }
     };
 
     animFrame = requestAnimationFrame(tick);
 
-    // Fallback safety timeout in case RAF is backgrounded or tab loses focus
-    const safetyTimer = setTimeout(() => {
-      setLoading(false);
+    // Fallback safety timeout
+    const safety = setTimeout(() => {
+      setIsVisible(false);
       document.body.style.overflow = originalOverflow;
     }, 2800);
 
     return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(safety);
       cancelAnimationFrame(animFrame);
-      clearTimeout(safetyTimer);
       document.body.style.overflow = originalOverflow;
     };
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      {loading && (
-        <motion.div
-          key="welcome-curtain"
-          initial={{ y: 0 }}
-          exit={{
-            y: "-100%",
-            transition: {
-              duration: 0.95,
-              ease: [0.76, 0, 0.24, 1], // Cinematic exponential deceleration
-            },
-          }}
-          className="fixed inset-0 z-[99999] bg-[#080808] text-white flex flex-col justify-between p-6 sm:p-12 overflow-hidden pointer-events-auto select-none"
-        >
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(255,173,50,0.07),transparent_70%)] pointer-events-none" />
-
-          {/* Top Status Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15, transition: { duration: 0.3 } }}
-            className="flex items-center justify-between z-10 w-full"
-          >
-            <div className="flex items-center gap-2.5 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400">
-              <span className="w-2 h-2 rounded-full bg-[#FFAD32] animate-pulse shadow-[0_0_8px_#FFAD32]" />
-              <span className="hidden sm:inline">[ 28°38'N 77°13'E // DEL • BOM • JAI ]</span>
-              <span className="sm:hidden">DEL • BOM • JAI</span>
-            </div>
-
-            <div className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400">
-              <span>NOISECULTURE ENGINE // 2.0</span>
-            </div>
-          </motion.div>
-
-          {/* Center Stage: Kinetic Typography & Wordmark */}
-          <motion.div
-            exit={{ opacity: 0, y: -40, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
-            className="my-auto text-center space-y-6 sm:space-y-8 z-10 max-w-4xl mx-auto px-4 w-full"
-          >
-            {/* Top Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#FFAD32]"
-            >
-              <span>INDEPENDENT CULTURE-DRIVEN GROWTH</span>
-            </motion.div>
-
-            {/* Giant Brand Wordmark */}
-            <div className="relative overflow-hidden py-1">
-              <motion.h1
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-7xl md:text-8xl font-display font-black tracking-tighter uppercase text-white"
+    <AnimatePresence>
+      {isVisible && (
+        <div className="fixed inset-0 z-[99999] pointer-events-auto select-none overflow-hidden">
+          {/* Background: 5 Cascading Editorial Shutter Columns */}
+          <div className="absolute inset-0 grid grid-cols-5 w-full h-full">
+            {columns.map((colIndex) => (
+              <motion.div
+                key={colIndex}
+                initial={{ y: 0 }}
+                exit={{
+                  y: "-100%",
+                  transition: {
+                    duration: 0.85,
+                    delay: colIndex * 0.055, // Cascading liquid shutter wave
+                    ease: [0.85, 0, 0.15, 1], // Luxury cubic bezier
+                  },
+                }}
+                className="relative h-full bg-[#080808] border-r border-white/[0.04] last:border-r-0"
               >
-                NOISE<span className="text-[#FFAD32]">CULTURE</span>
-                <span className="inline-block w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#FFAD32] ml-1.5 sm:ml-3 align-baseline shadow-[0_0_15px_#FFAD32]" />
-              </motion.h1>
-            </div>
-
-            {/* Cycling Kinetic Sub-line */}
-            <div className="h-8 sm:h-10 relative flex items-center justify-center overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={phraseIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="text-xs sm:text-base md:text-lg font-mono tracking-widest text-neutral-300 font-medium"
-                >
-                  {phrases[phraseIndex]}
-                </motion.p>
-              </AnimatePresence>
-            </div>
-
-            {/* Precision 1px Progress Track */}
-            <div className="max-w-xs sm:max-w-md mx-auto pt-2">
-              <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-[#FFAD32] via-[#FFAD32] to-white shadow-[0_0_10px_#FFAD32]"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Bottom Metre & Numerical Counter */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15, transition: { duration: 0.3 } }}
-            className="flex items-end justify-between z-10 w-full"
-          >
-            <div className="space-y-1">
-              <div className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400">
-                SYSTEM STATUS
-              </div>
-              <div className="text-xs sm:text-sm font-mono text-white font-medium flex items-center gap-2">
-                <span>SYNCHRONIZING</span>
-                <span className="text-[#FFAD32]">
-                  {progress < 100 ? "BUFFERING" : "LIVE"}
-                </span>
-              </div>
-            </div>
-
-            <div className="text-right">
-              <div className="text-4xl sm:text-6xl md:text-7xl font-mono font-bold tracking-tight text-white tabular-nums">
-                <span className="text-[#FFAD32]">{progress.toString().padStart(2, "0")}</span>
-                <span className="text-neutral-500 text-lg sm:text-3xl font-light ml-1">%</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Bottom Elastic Curved Edge (Liquid Peel Effect on Exit) */}
-          <div className="absolute -bottom-16 sm:-bottom-24 left-0 w-full h-16 sm:h-24 pointer-events-none">
-            <svg
-              className="w-full h-full text-[#080808] fill-current"
-              viewBox="0 0 1440 100"
-              preserveAspectRatio="none"
-            >
-              <path d="M0,0 C480,100 960,100 1440,0 L1440,0 L0,0 Z" />
-            </svg>
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFAD32]/60 to-transparent" />
+                {/* Micro-glow accent on bottom edge of each shutter */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFAD32]/40 to-transparent" />
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+
+          {/* Foreground: Editorial Layout */}
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{
+              opacity: 0,
+              y: -35,
+              transition: { duration: 0.35, ease: [0.76, 0, 0.24, 1] },
+            }}
+            className="absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-12 md:p-16 text-white"
+          >
+            {/* Top Corner Meta */}
+            <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-neutral-400">
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFAD32]" />
+                <span className="font-semibold text-white">NOISECULTURE</span>
+                <span className="text-neutral-500 hidden sm:inline">— CULTURE &amp; BRAND GROWTH</span>
+              </div>
+              <div className="text-neutral-400">
+                <span>EST. 2026 // INDEPENDENT</span>
+              </div>
+            </div>
+
+            {/* Center Stage: Oversized Masked Kinetic Typography */}
+            <div className="my-auto max-w-5xl mx-auto w-full text-center py-6 sm:py-10">
+              {/* Step indicator */}
+              <div className="mb-4 sm:mb-6 overflow-hidden h-5">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={wordIndex}
+                    initial={{ y: 15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -15, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.3em] text-[#FFAD32]"
+                  >
+                    <span>[ {sequence[wordIndex].label} / 03 ]</span>
+                    <span className="text-neutral-500">•</span>
+                    <span>{sequence[wordIndex].subtitle}</span>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Massive Bold Kinetic Headline */}
+              <div className="overflow-hidden py-2">
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={wordIndex}
+                    initial={{ y: "110%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-110%", opacity: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      ease: [0.16, 1, 0.3, 1], // Swift editorial snap
+                    }}
+                    className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black tracking-tighter uppercase leading-none"
+                  >
+                    {sequence[wordIndex].text === "NOISECULTURE" ? (
+                      <span className="inline-block">
+                        NOISE<span className="text-[#FFAD32]">CULTURE</span>
+                        <span className="inline-block w-3 h-3 sm:w-5 sm:h-5 rounded-full bg-[#FFAD32] ml-2 sm:ml-4 align-baseline shadow-[0_0_20px_#FFAD32]" />
+                      </span>
+                    ) : (
+                      <span className="text-white">
+                        {sequence[wordIndex].text}
+                      </span>
+                    )}
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
+
+              {/* Understated Minimalist Tagline */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="text-xs sm:text-sm font-sans tracking-widest text-neutral-400 uppercase mt-4 sm:mt-6 font-medium"
+              >
+                Independent Culture-Driven Creative Agency
+              </motion.p>
+            </div>
+
+            {/* Bottom Corner Meta & Precision Counter */}
+            <div className="flex items-end justify-between text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+              <div className="hidden sm:block">
+                <span className="text-neutral-500">FOOTPRINT:</span>
+                <span className="text-white ml-2">DELHI • MUMBAI • JAIPUR</span>
+              </div>
+
+              <div className="flex items-baseline gap-2 ml-auto sm:ml-0">
+                <span className="text-neutral-500 text-[10px]">PROGRESS</span>
+                <div className="text-2xl sm:text-4xl font-mono font-bold text-white tracking-tight tabular-nums">
+                  <span className="text-[#FFAD32]">{counter.toString().padStart(3, "0")}</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );
