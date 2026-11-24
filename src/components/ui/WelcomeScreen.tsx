@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -136,22 +137,27 @@ export function WelcomeScreen() {
               ) : (
                 <motion.div
                   key="phase-brand"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -25 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-4 sm:space-y-6"
+                  initial={{ opacity: 0, scale: 0.94, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-6 flex flex-col items-center justify-center"
                 >
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono uppercase tracking-[0.25em] text-[#FFAD32]">
                     <span>[ INDEPENDENT AGENCY ]</span>
                   </div>
 
-                  <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tight text-white leading-tight">
-                    NOISE<span className="text-[#FFAD32]">CULTURE</span>
-                    <span className="inline-block w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-[#FFAD32] ml-2 sm:ml-4 shadow-[0_0_20px_#FFAD32]" />
-                  </h1>
+                  <div className="relative w-64 sm:w-80 md:w-96 aspect-[467/408] my-2 filter drop-shadow-[0_0_40px_rgba(255,173,50,0.18)]">
+                    <Image
+                      src="/brand/lockup-transparent.png"
+                      alt="NoiseCulture"
+                      fill
+                      priority
+                      className="object-contain"
+                    />
+                  </div>
 
-                  <p className="text-sm sm:text-xl font-mono text-[#FFAD32] tracking-[0.25em] uppercase font-bold pt-1">
+                  <p className="text-sm sm:text-xl font-mono text-[#FFAD32] tracking-[0.3em] uppercase font-bold pt-1">
                     NOISE WITH INTENT.
                   </p>
                 </motion.div>

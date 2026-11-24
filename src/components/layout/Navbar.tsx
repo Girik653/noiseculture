@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
@@ -43,16 +44,35 @@ export function Navbar() {
           {/* Logo / Wordmark */}
           <Link
             href="/"
-            className="group flex items-center gap-2.5 focus:outline-none"
+            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none"
             aria-label="NoiseCulture Home"
           >
-            <span className="font-display font-extrabold tracking-tighter text-xl sm:text-2xl uppercase transition-transform duration-200 group-hover:scale-[1.02]">
-              NOISE<span className="text-[#FFAD32]">CULTURE</span>
-            </span>
+            {/* Monogram Emblem Badge */}
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-lg overflow-hidden bg-black border border-white/10 flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-md shrink-0">
+              <Image
+                src="/brand/emblem-black-bg.png"
+                alt="NoiseCulture Emblem"
+                width={36}
+                height={26}
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Dynamic Adaptive Wordmark */}
+            <div className="relative h-6 sm:h-7 w-36 sm:w-44 flex items-center">
+              <Image
+                src={!isScrolled && isHome ? "/brand/wordmark-light-mode.png" : "/brand/wordmark-dark-mode.png"}
+                alt="NoiseCulture"
+                width={170}
+                height={25}
+                className="object-contain object-left transition-opacity duration-200"
+                priority
+              />
+            </div>
+
             <span
-              className={`hidden sm:inline-block w-2 h-2 rounded-full ${
-                isScrolled ? "bg-[#FFAD32]" : isHome ? "bg-[#FFAD32]" : "bg-[#FFAD32]"
-              } animate-ping`}
+              className="hidden md:inline-block w-2 h-2 rounded-full bg-[#FFAD32] animate-ping ml-0.5"
               style={{ animationDuration: "3s" }}
             />
           </Link>
@@ -165,6 +185,15 @@ export function Navbar() {
             </div>
 
             <div className="pt-8 border-t border-neutral-800 space-y-4">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/brand/lockup-transparent.png"
+                  alt="NoiseCulture"
+                  width={110}
+                  height={96}
+                  className="w-20 h-auto object-contain opacity-85"
+                />
+              </div>
               <div className="text-xs font-mono text-neutral-400">
                 Independent Culture-Driven Growth Agency.
               </div>

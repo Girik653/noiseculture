@@ -8,7 +8,7 @@ export function generateOrganizationSchema() {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.svg`,
+    logo: `${siteConfig.url}/icon.png`,
     description: siteConfig.description,
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
@@ -115,7 +115,7 @@ export function generateArticleSchema(article: {
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/logo.svg`,
+        url: `${siteConfig.url}/icon.png`,
       },
     },
     mainEntityOfPage: {

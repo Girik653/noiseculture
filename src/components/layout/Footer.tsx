@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/data/siteConfig";
 import { ArrowUpRight, Mail, MessageCircle, MapPin, Instagram, Linkedin, Twitter } from "lucide-react";
 
@@ -32,10 +33,25 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 py-16 border-b border-white/10">
           {/* Col 1: About & Info */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-block">
-              <span className="font-display font-black text-2xl uppercase tracking-tighter">
-                NOISE<span className="text-[#FFAD32]">CULTURE</span>
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-md shrink-0">
+                <Image
+                  src="/brand/emblem-black-bg.png"
+                  alt="NoiseCulture Emblem"
+                  width={38}
+                  height={27}
+                  className="object-contain"
+                />
+              </div>
+              <div className="relative h-7 w-40 flex items-center">
+                <Image
+                  src="/brand/wordmark-dark-mode.png"
+                  alt="NoiseCulture"
+                  width={160}
+                  height={24}
+                  className="object-contain object-left"
+                />
+              </div>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
               Independent culture-driven creative marketing, communications and brand growth agency.
