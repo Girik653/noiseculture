@@ -49,7 +49,7 @@ export const articlesData: Article[] = [
         heading: "1. The Death of the Corporate Monologue",
         body: [
           "For decades, advertising was defined by broadcast monologues. A brand crafted a 30-second television spot or a full-page glossy magazine ad, paid for airtime, and dictated its message down to passive consumers. Today, that entire paradigm has collapsed.",
-          "On platforms like Instagram, TikTok, Reddit, and X, users possess instantaneous skip power. More crucially, their feeds place corporate advertisements right alongside group chats, absurdist humor, and breaking news. When a brand sounds like a stiff corporate entity pitching a product, the brain registers it as visual noise and swipes away within 0.4 seconds.",
+          "On platforms like Instagram, YouTube, Reddit, and X, users possess instantaneous skip power. More crucially, their feeds place corporate advertisements right alongside group chats, absurdist humor, and breaking news. When a brand sounds like a stiff corporate entity pitching a product, the brain registers it as visual noise and swipes away within 0.4 seconds.",
           "Memes are the native lingua franca of the modern internet. They are shared emotional units—condensed cultural references that evoke laughter, recognition, and solidarity. When a brand masters this language, it stops acting as an intruder on the timeline and becomes a welcome participant.",
         ],
         quote: "You cannot purchase cultural relevance with a media budget. You have to earn it with better ideas and genuine wit.",
@@ -123,7 +123,7 @@ export const articlesData: Article[] = [
       {
         heading: "3. Reusing Creative Energy Across the Ecosystem",
         body: [
-          "Consider the lifecycle of a high-performing creator video in an integrated model. It doesn't simply live on the creator's profile for 24 hours and disappear into the algorithm. Our performance team immediately secures whitelisting rights to turn that video into a high-converting Meta and TikTok Spark Ad.",
+          "Consider the lifecycle of a high-performing creator video in an integrated model. It doesn't simply live on the creator's profile for 24 hours and disappear into the algorithm. Our performance team immediately secures whitelisting rights to turn that video into a high-converting Meta and YouTube Ad.",
           "Our PR team uses the creator's organic engagement data as proof of consumer momentum in journalist pitches. Our brand team extracts customer testimonials from the comment section to feature on landing page hero sections.",
           "Every dollar invested in one channel compounds the return across all other channels. That is the integrated growth flywheel.",
         ],

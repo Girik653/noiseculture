@@ -20,10 +20,10 @@ export function CultureGlobeSection() {
       desc: "Direct access to top-tier meme channels and cultural aggregators.",
     },
     {
-      numericValue: 500,
+      numericValue: 85,
       suffix: "+",
-      label: "Creator & Culture Collabs",
-      desc: "High-impact creator activations, viral talent, and cultural pioneers moving timelines.",
+      label: "Tier-1 Editorial & Press Outlets",
+      desc: "Direct editorial and digital newsroom relationships across culture, business, and tech media.",
     },
     {
       numericValue: 100,

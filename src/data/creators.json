@@ -1,0 +1,149 @@
+{
+  "metaTitle": "For Creators | Brand Deals and Growth Support | Noise Culture",
+  "metaDescription": "Apply to join Noise Culture: long-term brand deals, growth support, production help, sponsored creator trips and brand building for creators.",
+  "hero": {
+    "eyebrow": "For creators",
+    "h1": "Your talent. Our network. Bigger possibilities.",
+    "text": "We help creators build lasting careers: steady brand deals, a full production team when you need one, group trips with other creators and, where it fits, a brand of your own.",
+    "primaryCta": {
+      "label": "Apply to join",
+      "href": "#apply"
+    },
+    "secondaryCta": {
+      "label": "See what you get",
+      "href": "#benefits"
+    }
+  },
+  "benefitsHeading": "What you get with us.",
+  "benefits": [
+    {
+      "id": "brand-deals",
+      "title": "Brand deals that last",
+      "text": "We bring you brand partnerships that fit your audience and build long-term relationships, not one-off posts. You are free to accept or decline any brand."
+    },
+    {
+      "id": "growth",
+      "title": "Help growing your channel",
+      "text": "We plan your growth with you: content direction, platform strategy, collaborations and regular reviews of what is working."
+    },
+    {
+      "id": "support",
+      "title": "Support from idea to upload",
+      "text": "Content ideation, scripting and script writers, editors, and a personal manager when you need one. We can also help with equipment. We work out the details with you in a personal meeting."
+    },
+    {
+      "id": "trips",
+      "title": "Sponsored creator trips",
+      "text": "We organise sponsored trips where creators come together to create content and collaborate, with brand projects arranged for the trip. We share the details in a personal meeting."
+    },
+    {
+      "id": "brand-building",
+      "title": "Build a brand with us",
+      "text": "If you want a brand of your own, we are open to building and growing it with you, from first idea to launch. Terms are agreed case by case."
+    },
+    {
+      "id": "supporting-cast",
+      "title": "Supporting cast, found for you",
+      "text": "Is your content bigger than one person? We help you find the people for the side roles in your shows and videos, so you can lead."
+    }
+  ],
+  "alsoWithUsHeading": "Also with us.",
+  "alsoWithUs": [
+    {
+      "title": "Written contracts",
+      "text": "Every deal is written down before work starts."
+    },
+    {
+      "title": "Creative freedom",
+      "text": "Your voice stays yours."
+    },
+    {
+      "title": "Free to say no",
+      "text": "You can decline any brand you do not like."
+    },
+    {
+      "title": "Invoicing and tax guidance",
+      "text": "Guidance on invoicing and taxes."
+    },
+    {
+      "title": "A creator community",
+      "text": "Groups, events and meet-ups where you meet other creators."
+    }
+  ],
+  "trips": {
+    "title": "Create together, somewhere new.",
+    "text": "We organise sponsored trips where creators come together to create content, collaborate with each other and work on brand projects arranged for the trip. We share the details in a personal meeting.",
+    "bullets": [
+      "Group trips with other creators",
+      "Collaboration content",
+      "Brand projects arranged for the trip"
+    ],
+    "gallery": []
+  },
+  "stepsHeading": "How we work with you",
+  "steps": [
+    {
+      "step": "01",
+      "title": "Apply",
+      "text": "Tell us who you are and what you make."
+    },
+    {
+      "step": "02",
+      "title": "We review",
+      "text": "We look at your content, your audience and how well you fit with brands we work with."
+    },
+    {
+      "step": "03",
+      "title": "We talk",
+      "text": "We discuss your goals and what support you want."
+    },
+    {
+      "step": "04",
+      "title": "We start",
+      "text": "Terms are written down and agreed before any work begins. Then we plan your first deals and content."
+    }
+  ],
+  "faqsHeading": "Frequently Asked Questions",
+  "faqs": [
+    {
+      "q": "Who can apply?",
+      "a": "Anyone. We review every application and choose creators ourselves."
+    },
+    {
+      "q": "How do the commercial terms work?",
+      "a": "Terms are agreed one to one in a personal meeting and written down before work starts."
+    },
+    {
+      "q": "Do I have to take every brand you bring?",
+      "a": "No. You are free to accept or decline any brand. There is no pressure either way."
+    },
+    {
+      "q": "Do I own my content?",
+      "a": "Yes. You keep ownership of your content."
+    },
+    {
+      "q": "How do creator trips work?",
+      "a": "We organise sponsored trips where creators come together to create content and collaborate. We explain how they work in a personal meeting."
+    },
+    {
+      "q": "What is the creator community?",
+      "a": "Groups, events and meet-ups where creators meet each other."
+    },
+    {
+      "q": "Does it cost anything to apply?",
+      "a": "No. Applying is free."
+    },
+    {
+      "q": "Can you help with equipment?",
+      "a": "We can help with it. What that means for you is discussed in a personal meeting."
+    },
+    {
+      "q": "Can you help me find people for my videos?",
+      "a": "Yes. If your content needs a supporting cast, we help you find people for the side roles."
+    }
+  ],
+  "form": {
+    "consentText": "I agree that Noise Culture may store and use these details to review my application and contact me.",
+    "successMessage": "Thanks. We have received your application and will be in touch."
+  }
+}

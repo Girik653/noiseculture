@@ -55,7 +55,7 @@ export const caseStudiesData: CaseStudy[] = [
       "Reactive Social Commentary Engine",
     ],
     summary:
-      "When HyperThread launched their recycled hemp collection, they refused to run another preachy greenwashing ad. Instead, NoiseCulture engineered an audacious campaign satirizing fast fashion micro-trends, sparking a viral meme movement across Instagram and TikTok.",
+      "When HyperThread launched their recycled hemp collection, they refused to run another preachy greenwashing ad. Instead, NoiseCulture engineered an audacious campaign satirizing fast fashion micro-trends, sparking a viral meme movement across Instagram and social channels.",
     challenge:
       "The sustainable fashion market was saturated with solemn, guilt-inducing environmental messaging that Gen Z scrollers routinely ignored. HyperThread needed to achieve massive brand awareness without coming across as sanctimonious or out of touch.",
     audienceInsight:
@@ -66,7 +66,7 @@ export const caseStudiesData: CaseStudy[] = [
       "Over 48 hours, 85 curated pop culture and satire meme channels posted original comic strips, relatable video sketches, and audio formats mocking disposable wardrobe culture, culminating in an exclusive drop reveal that sold out in 14 minutes.",
     distributionChannels: [
       "Instagram Meme Publisher Ecosystem (65M+ combined reach)",
-      "TikTok Audio Trend Seeding",
+      "Short-Form Audio & Trend Seeding",
       "Reddit r/streetwear & r/anticonsumption community seeding",
       "PR digital newsroom pickup across lifestyle publications",
     ],
@@ -339,7 +339,7 @@ export const caseStudiesData: CaseStudy[] = [
       "Macro dermatologists provided deep ingredient breakdowns, while everyday micro-creators documented real morning routines, creating a multi-layered trust ecosystem that drove unprecedented conversions.",
     distributionChannels: [
       "Instagram Reels & Carousel Education",
-      "TikTok Before & After Progression Series",
+      "Reels & Short-Form Progression Series",
       "Meta Whitelisted Spark Ads",
       "Reddit r/SkincareAddiction Organic Community Threads",
     ],

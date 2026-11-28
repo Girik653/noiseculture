@@ -104,7 +104,7 @@ export const servicesData: ServiceDetail[] = [
     tagline: "Algorithms reward creative empathy. We engineer paid ads people don't skip.",
     h1: "High-Performance Paid Media & Media Buying Agency",
     definition:
-      "Paid Media at NoiseCulture is the convergence of culture-led creative production and rigorous algorithmic media buying across Meta, Google, YouTube, TikTok, and programmatic networks to drive scalable customer acquisition at profitable unit economics.",
+      "Paid Media at NoiseCulture is the convergence of culture-led creative production and rigorous algorithmic media buying across Meta, Google, YouTube, and programmatic networks to drive scalable customer acquisition at profitable unit economics.",
     overview:
       "The era of boring static direct-response ads is dead. Algorithmic ad platforms now favor native, culturally resonant content. We engineer thumb-stopping video ads, meme-native paid assets, and granular retargeting architectures that turn cold scrollers into loyal buyers.",
     capabilities: [
@@ -236,7 +236,7 @@ export const servicesData: ServiceDetail[] = [
     tagline: "Authenticity cannot be faked. We connect you with voices that genuinely move culture.",
     h1: "Data-Driven Influencer Marketing & Creator Partnerships Agency",
     definition:
-      "Influencer Marketing at NoiseCulture is the data-validated casting, creative orchestration, and commercial management of collaborations between leading brands and digital content creators across YouTube, Instagram, TikTok, and LinkedIn.",
+      "Influencer Marketing at NoiseCulture is the data-validated casting, creative orchestration, and commercial management of collaborations between leading brands and digital content creators across YouTube, Instagram, X, and LinkedIn.",
     overview:
       "Most influencer campaigns fail because brands treat creators like human billboards with rigid corporate scripts. We champion creator-led storytelling, pairing deep audience analytics with creative freedom that yields authentic advocacy, fan trust, and measurable conversion.",
     capabilities: [

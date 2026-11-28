@@ -31,10 +31,13 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="text-xl font-display font-bold uppercase text-white pt-4">
-            2. Creator Roster Governance
+            2. Creator Applications &amp; Talent Evaluation
           </h2>
           <p>
-            For digital creators submitting representation applications, audience metrics, handles, and commercial rate expectations are stored securely and evaluated solely by our senior talent directors for prospective brand campaign casting.
+            When you apply through our creator application form at {siteConfig.url}/for-creators, we collect your full name, email address, WhatsApp contact number, city, content language(s), primary platform, social handle or channel URL, content niche, combined audience tier, collaboration preferences (such as brand deals, channel growth, production support, creator trips, brand building, or supporting cast), and optional 12-month goals.
+          </p>
+          <p>
+            This information is used strictly by Noise Culture to evaluate your content, determine fit with upcoming brand collaborations, and contact you directly regarding prospective representation or partnership opportunities. We do not sell, rent, or publicly disclose your contact details or application data.
           </p>
 
           <h2 className="text-xl font-display font-bold uppercase text-white pt-4">

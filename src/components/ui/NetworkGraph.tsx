@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { creatorsRoster } from "@/data/creators";
 import { ArrowUpRight, Sparkles, Users, MessageSquare, Newspaper, Zap } from "lucide-react";
 
 interface NodeData {
@@ -15,7 +13,6 @@ interface NodeData {
   angle: number; // degrees around center
   distance: number; // percentage from center
   icon: any;
-  avatar?: string;
   color: string;
 }
 
@@ -32,13 +29,12 @@ const networkNodes: NodeData[] = [
   },
   {
     id: "creators",
-    title: "Exclusive Creator Roster",
+    title: "Creator & Talent Network",
     category: "Culture Personalities & Talent",
-    stat: "40+ Creators",
+    stat: "Culture Network",
     angle: 110,
     distance: 42,
     icon: Users,
-    avatar: "/images/creators/aria-chen.jpg",
     color: "#FFFFFF",
   },
   {
@@ -62,14 +58,13 @@ const networkNodes: NodeData[] = [
     color: "#FFFFFF",
   },
   {
-    id: "streetwear",
-    title: "Visual Artists & Curators",
-    category: "Fashion, 3D Art & Designers",
-    stat: "15+ Studios",
+    id: "studios",
+    title: "Creative Studios & Curators",
+    category: "Design, 3D Art & Visual Production",
+    stat: "Creative Network",
     angle: 330,
     distance: 39,
     icon: Sparkles,
-    avatar: "/images/creators/kavya-reddy.jpg",
     color: "#FFAD32",
   },
 ];
@@ -158,7 +153,7 @@ export function NetworkGraph() {
           </div>
         </motion.div>
 
-        {/* Orbiting Satellite Nodes */}
+        {/* Orbiting Satellite Nodes (Plain icons only, no portraits per brief) */}
         {networkNodes.map((node) => {
           const rad = (node.angle * Math.PI) / 180;
           const x = 50 + Math.cos(rad) * node.distance;
@@ -176,30 +171,19 @@ export function NetworkGraph() {
                 transform: "translate(-50%, -50%)",
               }}
               whileHover={{ scale: 1.15 }}
-              className={`absolute z-30 group p-2 rounded-2xl transition-all duration-300 flex items-center gap-2.5 ${
+              className={`absolute z-30 group p-2.5 rounded-2xl transition-all duration-300 flex items-center gap-2.5 ${
                 isActive
                   ? "bg-[#FFAD32] text-black shadow-[0_0_30px_rgba(255,173,50,0.5)] border-2 border-white"
                   : "bg-[#141414] text-white border border-white/15 hover:border-[#FFAD32]"
               }`}
             >
-              {node.avatar ? (
-                <div className="relative w-8 h-8 rounded-xl overflow-hidden shrink-0 border border-white/20">
-                  <Image
-                    src={node.avatar}
-                    alt={node.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
-                    isActive ? "bg-black text-[#FFAD32]" : "bg-white/10 text-[#FFAD32]"
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                </div>
-              )}
+              <div
+                className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                  isActive ? "bg-black text-[#FFAD32]" : "bg-white/10 text-[#FFAD32]"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+              </div>
 
               <div className="text-left pr-1.5 hidden sm:block">
                 <div className="text-[11px] font-display font-bold uppercase leading-tight tracking-tight">
@@ -236,7 +220,7 @@ export function NetworkGraph() {
               {activeNode.title}
             </div>
             <div className="text-sm font-mono text-neutral-300 mt-1">
-              Verified Reach: <span className="text-[#FFAD32] font-bold">{activeNode.stat}</span>
+              Verified Focus: <span className="text-[#FFAD32] font-bold">{activeNode.stat}</span>
             </div>
           </motion.div>
         )}
@@ -252,7 +236,7 @@ export function NetworkGraph() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFAD32]/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase text-[#FFAD32] tracking-wider mb-4">
-              Pathway 01 • Enterprise & Scaleups
+              Pathway 01 • Enterprise &amp; Scaleups
             </div>
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-white uppercase tracking-tight mb-2">
               FOR BRANDS ↗
@@ -267,7 +251,7 @@ export function NetworkGraph() {
           </div>
         </Link>
 
-        {/* Pathway 2: For Creators */}
+        {/* Pathway 2: For Creators (Updated per Brief Section 7) */}
         <Link
           href="/for-creators"
           className="group relative p-8 rounded-3xl bg-gradient-to-br from-[#1A160F] to-[#0A0A0A] border border-[#FFAD32]/30 hover:border-[#FFAD32] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xl"
@@ -275,17 +259,17 @@ export function NetworkGraph() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFAD32]/20 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFAD32]/20 border border-[#FFAD32]/40 text-[10px] font-mono uppercase text-[#FFAD32] tracking-wider mb-4">
-              Pathway 02 • Creators & Talent
+              Pathway 02 • Creators &amp; Talent
             </div>
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-white uppercase tracking-tight mb-2">
               FOR CREATORS ↗
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">
-              Full-service talent representation, Fortune 500 brand sponsorships, proprietary merchandise incubation, and diversified revenue engines.
+              For creators: brand deals that last, help growing your channel, production support, creator trips and brand building. Apply to join.
             </p>
           </div>
           <div className="mt-8 flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#FFAD32] group-hover:text-white transition-colors">
-            <span>Apply For Representation</span>
+            <span>Apply to join</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </div>
         </Link>
